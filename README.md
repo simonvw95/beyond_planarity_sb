@@ -3,6 +3,7 @@ This repository contains a spring-based heuristic for drawing nearly-planar grap
 
 ### Requirements
 The requirements can be found in requirements.txt
+These requirements work for Python 3.5.6, higher versions may run into issues with ForceAtlas2 not properly weighting their edges. Working with Python 3.5.6 is advised.
 
 ### Motivation
 Given a graph layout (Figure 1) and a set of problematic edges that are put on top (Figure 2), common layout algorithms, such as [ForceAtlas2](https://github.com/bhargavchippada/forceatlas2) and [Stress Majorization](https://graphviz.org/documentation/GKN04.pdf), will tend to fold the layout as a result of the problematic edges influencing the global structure. Their effects result in a layout seen in Figure 3.
@@ -45,4 +46,4 @@ More results can also be seen in Figure 8.
 | *Figure 8: Various graphs with laid out differently (see paper for precise explanations)* |
 
 ### Use
-
+heuristic.py has all the functions needed to create coordinates for a given networkx graph object, using either ForceAtlas2 or Stress Majorization. Each python file has explanations on the input and output of each function. For the interested reader, we specifically point to the 'weight_create_layout' function in heuristic.py. This function performs all three steps as described above and spits out the node coordinates in a dictionary format. Additionally, if a set of problematic edges are known and given as input in this function then the classification success/errors are given in addition to the coordinates. metrics.py and utils.py contain useful helper functions to compute quality metrics and to visualize and save layouts, respectively.
