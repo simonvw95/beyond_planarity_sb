@@ -22,17 +22,17 @@ As a result of the simple weighting strategy, the planar substruct reveals itsel
 
 Therefore, a simple heuristic is proposed to classify edges and weight these edges differently if they are considered outlying (problematic) edges. It has the following steps:
 
-1. Compute footprints
+1. Compute footprints\\
 A footprint for each edge is computed by finding all the shortest node/edge-disjoint paths after removal of the edge. These paths will have varying lengths, with the intuition that more problematic edges tend to have many paths with longer path lengths. These paths can be computed using the Max-Flow Edmonds-Karp algorithm as described in the [Algorithm Design](https://ict.iitk.ac.in/wp-content/uploads/CS345-Algorithms-II-Algorithm-Design-by-Jon-Kleinberg-Eva-Tardos.pdf) book.
 
-2. Standardize footprints
+2. Standardize footprints\\
 After these footprints are found for each edge we need to standardize these footprints to have the same length. We expand or contract the footprints, depending on the user-specified number of dimensions $k$ and function $\mathcal M$, which can be either the minimum, maximum, or mean function. Equation 1 below portrays how the footprints are expanded or contracted, given a footprint $f(e)$ of initial length $l$ and a desired length $k$.
 
 | ![equation.jpg](https://github.com/simonvw95/beyond_planarity_sb/blob/main/figures/equation.png) |
 |:--:|
 | *Equation 1* |
 
-3. Computing and weighting outliers
+3. Computing and weighting outliers\\
 Now that we have computed all the footprints for all the edges we need to classify which ones are anamolous and which ones are not. This classification task is performed by the [Isolation Forest](https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf) technique. We run this technique on the standardized footprints, the edges that are classified as anamolous are then weighted by  $\mathcal M(f(e))$.
 
 The results of the heuristic can be seen in Figures 6 and 7.
