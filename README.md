@@ -1,4 +1,4 @@
-# Beyond Planarity - A Spring-Based Approach
+# Identifying Cluttering Edges in Near-Planar Graphs
 This repository contains a spring-based heuristic for drawing nearly-planar graphs. 
 
 ### Requirements
